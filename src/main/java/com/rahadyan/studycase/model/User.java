@@ -1,5 +1,6 @@
 package com.rahadyan.studycase.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -58,5 +59,26 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_job", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "job_id"))
+	private Set<Job> jobs;
+	
+	public void addJob(Job job) {
+		if(jobs == null) {
+			jobs = new HashSet<>();
+		}
+		jobs.add(job);
+	}
+	
+//	public void addPhoneNumber(PhoneNumber number) {
+//		if(number!=null) {
+//			if(numbers==null) {
+//				numbers = new HashSet<>();
+//			}
+//			number.setCustomer(this);
+//			numbers.add(number);
+//		}
+//	}
 
 }
