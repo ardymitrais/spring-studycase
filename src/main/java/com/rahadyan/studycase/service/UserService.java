@@ -16,7 +16,7 @@ import com.rahadyan.studycase.repository.UserRepository;
 public class UserService implements IUserService {
 
 	@Autowired
-	private UserRepository useRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
 	private RoleRepository roleRepository;
@@ -26,7 +26,7 @@ public class UserService implements IUserService {
 	
 	@Override
 	public User findUserByEmail(String email) {
-		return useRepository.findByEmail(email);
+		return userRepository.findByEmail(email);
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class UserService implements IUserService {
 		user.setActive(1);
 		Role userRole = roleRepository.findByRole("ADMIN");
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-		return useRepository.save(user);
+		return userRepository.save(user);
 	}
 
 }

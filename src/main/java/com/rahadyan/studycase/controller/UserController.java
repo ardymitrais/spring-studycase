@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LoginController {
+public class UserController {
 
     @Autowired
     private UserService userService;
