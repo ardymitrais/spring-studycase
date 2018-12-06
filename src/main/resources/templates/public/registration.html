@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Study Case</title>
+
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" />
+<!-- MetisMenu CSS -->
+<link th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-md-offset-4">
+				<div class="login-panel panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Registration Form</h3>
+					</div>
+					<div class="panel-body">
+						<form th:action="@{/registration}" th:object="${user}" method="post" class="form-signin" role="form">
+							<fieldset>
+								<div class="form-group">
+									<label>First Name</label>
+									<input type="text" th:field="*{firstName}" class="form-control"/>
+									<label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="validation-message"></label>
+								</div>
+								<div class="form-group">
+									<label>Last Name</label>
+									<input type="text" th:field="*{lastName}" class="form-control"/>
+									<label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="validation-message"></label>
+								</div>
+								<div class="form-group">
+									<label>Email</label>
+									<input type="text" th:field="*{email}" class="form-control"/>
+									<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
+								</div>
+								<div class="form-group">
+									<label>Password</label>
+									<input type="password" th:field="*{password}" class="form-control"/>
+									<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
+								</div>
+								<div class="form-group">
+									<label>Address</label>
+									<textarea th:field="*{address}" class="form-control"></textarea>
+									<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label>
+								</div>
+								<div class="form-group">
+									<label>Education</label>
+									<input type="text" th:field="*{education}" class="form-control"/>
+									<label th:if="${#fields.hasErrors('education')}" th:errors="*{education}" class="validation-message"></label>
+								</div>
+								<div class="form-group">
+									<label>School</label>
+									<input type="text" th:field="*{school}" class="form-control"/>
+									<label th:if="${#fields.hasErrors('school')}" th:errors="*{school}" class="validation-message"></label>
+								</div>
+								<div align="center" th:if="${param.error}">
+									<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+								</div>
+								<!-- Change this to a button or input when using this as a form -->
+								<button class="btn btn-lg btn-success btn-block" name="Submit" type="submit" th:text="Registration"></button>
+							</fieldset>
+						</form>
+						<form th:action="@{/login}" method="get" style="margin-top: 20px;">
+								<button class="btn btn-link"
+									name="registration" type="Submit">
+									<i class="fa fa-sign-out fa-fw"></i>Back to Login
+								</button>
+							</form>
+						<h3><span class="text-success" th:utext="${successMessage}"></span></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script th:src="@{/vendor/metisMenu/metisMenu.min.js}"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script th:src="@{/js/sb-admin-2.js}"></script>
+
+</body>
+
+</html>

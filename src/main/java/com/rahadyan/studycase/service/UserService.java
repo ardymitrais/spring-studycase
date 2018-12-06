@@ -1,7 +1,6 @@
 package com.rahadyan.studycase.service;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,12 +29,20 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public User saveUser(User user) {
+	public User save(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setActive(1);
-		Role userRole = roleRepository.findByRole("ADMIN");
-		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		Role userRole = roleRepository.findByRole("MEMBER");
+		user.setRole(userRole);
 		return userRepository.save(user);
 	}
+
+	@Override
+	public List<User> findAllByRoleId(Integer role) {
+		List<User> users = userRepository.findAllUserByRoleId(role);
+		return users;
+	}
+
+	
 
 }

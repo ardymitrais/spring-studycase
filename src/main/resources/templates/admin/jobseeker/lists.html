@@ -22,12 +22,7 @@
 	<div class="container-fluid" layout:fragment="content">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Job Lists</h1>
-				<div class="row">
-					<div class="panel-body">
-						<a href="createproduct.html" th:href="@{/job/create}" class="btn btn-primary">Add Job</a>
-					</div>
-				</div>
+				<h1 class="page-header">Jobseeker Lists</h1>
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
@@ -39,26 +34,18 @@
 									id="jobTable">
 									<thead>
 										<tr>
-											<th>Title</th>
-											<th>Company</th>
-											<th>Location</th>
-											<th>Salary</th>
-											<th>Type</th>
-											<th>Action</th>
+											<th>Name</th>
+											<th>Education</th>
+											<th>School</th>
+											<th>Email</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="j: ${jobs}">
-											<td th:text="${j.title}"></td>
-											<td th:text="${j.company}"></td>
-											<td th:text="${j.location}"></td>
-											<td th:text="${j.salary}"></td>
-											<td th:text="${j.type}"></td>
-											<td>
-												<a th:href="@{/job/resume/{id}(id=${j.id})}" role="button" class="btn btn-info btn-circle"> <i class="fa fa-search-plus"></i></a> 
-												<a th:href="@{/job/edit/{id}(id=${j.id})}" role="button" class="btn btn-info btn-circle"> <i class="fa fa-pencil"></i></a> 
-												<a th:href="@{/job/delete/{id}(id=${j.id})}" role="button" class="btn btn-info btn-circle" onclick="if (!confirm('Are you sure want to delete this job information?')) return false;"><i class="fa fa-trash-o"></i></a>
-											</td>
+										<tr th:each="u: ${users}">
+											<td th:text="${u.firstName} + ' ' + ${u.lastName}"></td>
+											<td th:text="${u.education}"></td>
+											<td th:text="${u.school}"></td>
+											<td th:text="${u.email}"></td>
 										</tr>
 									</tbody>
 								</table>

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.rahadyan.studycase.model.Apply;
 import com.rahadyan.studycase.model.Job;
+import com.rahadyan.studycase.service.ApplyService;
 import com.rahadyan.studycase.service.JobService;
 
 @Controller
@@ -20,6 +22,9 @@ public class JobController {
 
 	@Autowired
 	JobService jobService;
+	
+	@Autowired
+	ApplyService applyService;
 
 	@GetMapping("/job")
 	public String readJob(Model model) {
@@ -71,5 +76,14 @@ public class JobController {
 		}
 		
 		return "redirect:/job";
+	}
+
+	@GetMapping("/job/resume/{id}")
+	public String listResume(@PathVariable String id,Model model) {
+		List<Apply> applies = applyService.findAppliesByJobId(Integer.parseInt(id));
+		
+		model.addAttribute("applies", applies);
+		
+		return "/admin/job/resume";
 	}
 }

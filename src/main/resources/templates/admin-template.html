@@ -44,7 +44,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="home">SB Admin v2.0</a>
+				<a class="navbar-brand" th:href="@{/}">HireTo</a>
 			</div>
 			<!-- /.navbar-header -->
 
@@ -55,14 +55,9 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
 						<li>
 							<form th:action="@{/logout}" method="get">
-								<button class="btn btn-md btn-danger btn-block"
+								<button class="btn btn-link"
 									name="registration" type="Submit">
 									<i class="fa fa-sign-out fa-fw"></i>Logout
 								</button>
@@ -78,22 +73,13 @@
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 
-						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
+						<li><a th:href="@{/dashboard}"><i class="fa fa-dashboard fa-fw"></i>
 								Dashboard</a></li>
 
 						<li><a th:href="@{/job}"><i class="fa fa-table fa-fw"></i>
-								Post</a></li>
-						<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
-								Resume</a></li>
-
-
-						<li class="active"><a href="#"><i
-								class="fa fa-files-o fa-fw"></i> Sample Pages<span
-								class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a class="active" href="blank.html">Blank Page</a></li>
-								<li><a href="login.html">Login Page</a></li>
-							</ul> <!-- /.nav-second-level --></li>
+								Job</a></li>
+						<li><a th:href="@{/jobseeker}"><i class="fa fa-edit fa-fw"></i>
+								Jobseeker</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->

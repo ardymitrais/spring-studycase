@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{public-template}">
+
+<div class="container-fluid" layout:fragment="content">
+	<div class="row">
+		<div class="col-lg-8">
+			<h1 class="page-header">Available Job</h1>
+			<div class="row" th:each="j: ${jobs}">
+				<div class="panel panel-default">
+					<div class="panel-heading" th:text="${j.title}"></div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-5">
+								<dl>
+									<dt>Company</dt>
+									<dd th:text="${j.company}"></dd>
+									<dt>Location</dt>
+									<dd th:text="${j.location}"></dd>
+								</dl>
+							</div>
+							<div class="col-lg-7">
+
+								<dl>
+									<dt>Industry</dt>
+									<dd th:text="${j.industry}"></dd>
+									<dt>Employment</dt>
+									<dd th:text="${j.type}"></dd>
+								</dl>
+								<a th:href="@{/detail-job/{id}(id=${j.id})}" role="button"
+							class="btn btn-primary pull-right"> <i class="fa fa-search-plus"></i> Detail</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.col-lg-6 -->
+
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+
+</html>
+

@@ -52,8 +52,4 @@ public class JobService implements IJobService {
 			
 		return response;
 	}
-	
-
-	
-	
 }

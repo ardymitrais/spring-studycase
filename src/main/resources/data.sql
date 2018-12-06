@@ -1,1 +1,3 @@
 REPLACE INTO `role` VALUES (1,'ADMIN');
+REPLACE INTO `role` VALUES (2,'MEMBER');
+REPLACE INTO `user` VALUES (1,1, NULL, NULL,'admin1@gmail.com','Admin','1','$2a$10$HlXtcfKM9ZEmkzfzInu9Ze40NOU5CFDydgLsvsXVzjF26.Yi64KPO',NULL,1);

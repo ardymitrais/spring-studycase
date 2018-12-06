@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{base}">
+	layout:decorate="~{admin-template}">
 <th:block layout:fragment="stylesheet">
 	<script th:src="@{/vendor/tinymce/tinymce.min.js}"></script>
 	<script>
@@ -44,6 +44,13 @@
 											<label>Location</label>
 											<input type="text" th:field="*{location}" placeholder="Location" class="form-control" required />
 											<label th:if="${#fields.hasErrors('location')}" th:errors="*{location}" class="help-block"></label>
+										</div>
+										<div class="form-group">
+											<label>Industry</label> <input type="text"
+												th:field="*{industry}" placeholder="Industry"
+												class="form-control" required /> <label
+												th:if="${#fields.hasErrors('industry')}"
+												th:errors="*{industry}" class="help-block"></label>
 										</div>
 										<div class="form-group">
 											<label>Salary</label>

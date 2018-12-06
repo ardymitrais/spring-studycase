@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{public-template}">
+
+<div class="container-fluid" layout:fragment="content">
+	<div class="row">
+		<div class="col-lg-12" th:object="${job}">
+			<div class="row">
+				<h1 class="page-header" th:text="*{title}"></h1>
+				<dl>
+					<dt>
+						<h3>Company</h3>
+					</dt>
+					<dd th:text="*{company}"></dd>
+					<dt>
+						<h3>Location</h3>
+					</dt>
+					<dd th:text="*{location}"></dd>
+					<dt>
+						<h3>Salary</h3>
+					</dt>
+					<dd th:text="'IDR ' + *{salary}"></dd>
+					<dt>
+						<h3>Job Description</h3>
+					</dt>
+					<dd th:utext="*{description}"></dd>
+				</dl>
+
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<a th:href="@{/}" role="button" class="btn btn-info"> <i
+						class="fa fa-mail-reply  "></i> Back
+					</a>
+				</div>
+				<div class="col-lg-6">
+					<!-- <form th:action="@{/apply/}" method="post">
+						<button class="btn btn-primary pull-right" name="registration"
+							type="Submit">
+							<i class="fa fa-sign-out fa-fw"></i>Apply
+						</button>
+					</form> -->
+					
+					<a th:href="@{/apply/{id}(id=${id})}" role="button" 
+						class="btn btn-primary pull-right"> <i class="fa fa-sign-out fa-fw"></i> Apply</a>
+				</div>
+			</div>
+			<br /> <br />
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+
+</html>
+

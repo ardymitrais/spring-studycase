@@ -47,16 +47,14 @@
 										name="password" type="password" value="">
 								</div>
 								<div align="center" th:if="${param.error}">
-									<p style="font-size: 20; color: #FF1C19;">Email or Password
-										invalid, please verify</p>
+									<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
 								</div>
 								<!-- Change this to a button or input when using this as a form -->
 								<button class="btn btn-lg btn-success btn-block" name="Submit" value="Login" type="submit" th:text="Login"></button>
 							</fieldset>
 						</form>
-						<form th:action="@{/registration}" method="get">
-						<br/>
-							<button class="btn btn-lg btn-success btn-block" type="submit">Registration</button>
+						<form th:action="@{/registration}" method="get" style="margin-top: 20px;"> 
+							<button class="btn btn-link" type="submit"><i class="fa fa-sign-out fa-fw"></i>Registration</button>
 						</form>
 					</div>
 				</div>

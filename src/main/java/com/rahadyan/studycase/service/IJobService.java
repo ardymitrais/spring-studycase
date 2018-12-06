@@ -12,4 +12,5 @@ public interface IJobService {
 	String save(Job job);
 	
 	String delete(Integer id);
+	
 }
