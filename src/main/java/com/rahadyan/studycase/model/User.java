@@ -78,7 +78,29 @@ public class User {
 			fetch=FetchType.LAZY,
 			cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@ToString.Exclude
-	private List<Apply> applies; 
+	private List<Apply> applies;
+
+	public User(int id,
+			@Email(message = "Please provide a valid email") @NotEmpty(message = "Please prove an email") String email,
+			@Length(min = 5, message = "Your password must have at least 5 characters") @NotEmpty(message = "Please provide your password") String password,
+			@NotEmpty(message = "Please provide your first_name") String firstName,
+			@NotEmpty(message = "Please provide your last name") String lastName,
+			@NotEmpty(message = "Please provide your education") String education,
+			@NotEmpty(message = "Please provide your school") String school,
+			@NotEmpty(message = "Please provide your address") String address, int active) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.education = education;
+		this.school = school;
+		this.address = address;
+		this.active = active;;
+	} 
+	
+	
 
 //	@OneToMany(cascade = CascadeType.ALL)
 //	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

@@ -74,6 +74,24 @@ public class Job {
 	public enum Type {
 		FULLTIME, PARTTIME
 	}
+
+	public Job(int id, @NotEmpty(message = "Please provide your title") String title,
+			@NotEmpty(message = "Please provide your company") String company,
+			@NotEmpty(message = "Please provide your description") String description,
+			@NotEmpty(message = "Please provide your location") String location,
+			@NotNull(message = "Please provide your industry") String industry,
+			@NotNull(message = "Please provide your salary") int salary, Type type) {
+		this.id = id;
+		this.title = title;
+		this.company = company;
+		this.description = description;
+		this.location = location;
+		this.industry = industry;
+		this.salary = salary;
+		this.type = type;
+	}
+	
+	
 	
 	
 }

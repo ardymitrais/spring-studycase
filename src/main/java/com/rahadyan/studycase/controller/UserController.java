@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.rahadyan.studycase.model.Job;
-import com.rahadyan.studycase.model.Role;
 import com.rahadyan.studycase.model.User;
 import com.rahadyan.studycase.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

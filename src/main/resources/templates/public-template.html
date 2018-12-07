@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 
@@ -15,7 +16,8 @@
 	Case</title>
 
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet"	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" />
 
 <!-- MetisMenu CSS -->
 <link th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet">
@@ -24,7 +26,8 @@
 <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+<link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}"
+	rel="stylesheet">
 
 <th:block layout:fragment="stylesheet"></th:block>
 
@@ -48,20 +51,42 @@
 			</div>
 			<!-- /.navbar-header -->
 
+
 			<ul class="nav navbar-top-links navbar-right">
 
+				<li class="dropdown">
+					<div sec:authorize="isAuthenticated()">
+						<div sec:authorize="hasAuthority('ADMIN')">Login as
+							Administrator</div>
+						<div sec:authorize="hasAuthority('MEMBER')">Login as
+							Jobseeker</div>
+					</div>
+
+				</li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
 						<li>
-							<form th:action="@{/login}" method="get">
-								<button class="btn btn-link"
-									name="registration" type="Submit">
-									<i class="fa fa-sign-out fa-fw"></i>Login
-								</button>
-							</form>
+							<div sec:authorize="isAuthenticated()">
+								<div sec:authorize="hasAuthority('ADMIN')">
+									<a th:href="@{/dashboard}" style="margin-left: -8px;"><i
+										class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+								</div>
+								<form th:action="@{/logout}" method="get">
+									<button class="btn btn-link" type="Submit">
+										<i class="fa fa-sign-out fa-fw"></i>Logout
+									</button>
+								</form>
+							</div>
+							<div sec:authorize="isAnonymous()">
+								<form th:action="@{/login}" method="get">
+									<button class="btn btn-link" type="Submit">
+										<i class="fa fa-sign-out fa-fw"></i>Login
+									</button>
+								</form>
+							</div>
 						</li>
 					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->
@@ -84,12 +109,12 @@
 
 	<!-- Metis Menu Plugin JavaScript -->
 	<script th:src="@{/vendor/metisMenu/metisMenu.min.js}"></script>
-	
+
 	<!-- Custom Theme JavaScript -->
 	<script th:src="@{/js/sb-admin-2.js}"></script>
-	
+
 	<th:block layout:fragment="scripts"></th:block>
-	
+
 </body>
 
 </html>
